@@ -15,10 +15,10 @@ class MoviesController < ApplicationController
     end
 
     def create
-        @movie = Movie.new(params[:movie])
+        @movie = Movie.new(movie_params)
         if @movie.save
           flash[:notice] = "#{@movie.title} was successfully created."
-          redirect_to movies_path
+          redirect_to movie_path(@movie)
         else
           render 'new' # note, 'new' template can access @movie's field values!
         end
@@ -44,5 +44,10 @@ class MoviesController < ApplicationController
         flash[:notice] = "Movie '#{@movie.title}' deleted."
         redirect_to movies_path
     end
+
+    private
+      def movie_params
+        params.require(:movie).permit(:title, :rating, :release_date)
+      end
 
   end
