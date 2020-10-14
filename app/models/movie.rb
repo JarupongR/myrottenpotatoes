@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
-    before_save :capitalize_title
+
+  has_many :reviews
+  before_save :capitalize_title
 
     def capitalize_title
     self.title = self.title.split(/\s+/).map(&:downcase).
