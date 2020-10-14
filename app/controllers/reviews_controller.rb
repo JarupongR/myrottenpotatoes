@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :has_moviegoer_and_movie, :only => [:new, :create]
+    
     protected
     def has_moviegoer_and_movie
       unless @current_user
@@ -11,10 +12,12 @@ class ReviewsController < ApplicationController
         redirect_to movies_path
       end
     end
+
     public
     def new
       @review = @movie.reviews.build
     end
+
     def create
       # since moviegoer_id is a protected attribute that won't get
       # assigned by the mass-assignment from params[:review], we set it
@@ -22,6 +25,22 @@ class ReviewsController < ApplicationController
       # set it manually with review.moviegoer = @current_user.
       @current_user.reviews << @movie.reviews.build(review_params)
       redirect_to movie_path(@movie)
+    end
+
+    def edit
+      @review = Review.find params[:id]
+      @movie = Movie.find params[:movie_id]
+    end
+
+    def update
+      @review = Review.find params[:id]
+      @movie = Movie.find params[:movie_id]
+      if @review.update_attributes(review_params)
+        flash[:notice] = "#{@movie.title} 's review was successfully updated."
+        redirect_to movie_path(@movie)
+      else
+        render 'edit' 
+      end
     end
 
     private

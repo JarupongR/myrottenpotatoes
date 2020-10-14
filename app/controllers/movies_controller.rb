@@ -8,6 +8,9 @@ class MoviesController < ApplicationController
         id = params[:id] # retrieve movie ID from URI route
         @movie = Movie.find(id) # look up movie by unique ID
         # will render app/views/movies/show.html.haml by default
+        if @current_user
+          @review = @movie.reviews.find_by(:moviegoer_id => @current_user.id)
+        end
     end
 
     def new
