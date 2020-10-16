@@ -1,5 +1,5 @@
 -# A single row of the All Movies table
-%tr{:class => ('adult' unless movie.rating =~ /^G|PG$/)}
+%tr{ class: movie.rating}
   %td= movie.title 
   %td= movie.rating
   %td= movie.release_date
