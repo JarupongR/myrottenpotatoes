@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
         if @current_user
           @review = @movie.reviews.find_by(:moviegoer_id => @current_user.id)
         end
+        render(:partial => 'movie_detail_popup', :object => @movie) if request.xhr?
     end
 
     def new
