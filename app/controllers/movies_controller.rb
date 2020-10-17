@@ -59,6 +59,25 @@ class MoviesController < ApplicationController
       end
     end
 
+    def search_tmdb
+      @search_terms = params[:search_terms]
+      @search_terms = " " if @search_terms  == ""
+      @search = Tmdb::Movie.find(@search_terms)
+  
+      if @search != []
+        render "result_search_tmdb"
+      else
+        flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+        redirect_to movies_path
+      end
+    end
+  
+    def result_search_tmdb
+      id = params[:id]
+      @movie = Movie.find(id)
+      render(:partial => 'movie', :object => @movie) if request.xhr?
+    end
+
     private
       def movie_params
         params.require(:movie).permit(:title, :rating, :release_date, :description)

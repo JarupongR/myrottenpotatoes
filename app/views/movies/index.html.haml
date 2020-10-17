@@ -15,3 +15,11 @@
 = link_to 'Add new movie', new_movie_path
 = javascript_pack_tag "movie_list_filter"
 = javascript_pack_tag "movie_detail_popup"
+
+%h1 Search TMDb for a movie
+
+= form_tag :action => 'search_tmdb' do
+
+  %label{:for => 'search_terms'} Search Terms
+  = text_field_tag 'search_terms'
+  = submit_tag 'Search TMDb'

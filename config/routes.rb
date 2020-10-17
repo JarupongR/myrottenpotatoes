@@ -8,6 +8,9 @@ Myrottenpotatoes::Application.routes.draw do
     resources :reviews
   end
 
+  # Route that posts 'Search TMDb' form
+  post '/movies/search_tmdb'
+
   root :to => redirect('/movies')
   
   get  'auth/:provider/callback' => 'sessions#create'

@@ -50,3 +50,4 @@ gem 'haml'
 
 gem 'omniauth-twitter'
 gem 'jquery-rails'
+gem 'themoviedb'
