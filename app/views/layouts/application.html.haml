@@ -7,6 +7,8 @@
     %script(src="app/assets/javascripts/application.js")
 
   %body
+    %h1.title
+      = link_to "RottenPotatoes", root_path
     = render :partial=>'login_form'
     - if flash[:notice]
       #notice.message= flash[:notice]
