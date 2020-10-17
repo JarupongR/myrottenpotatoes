@@ -23,3 +23,12 @@
 = link_to 'Delete', movie_path(@movie), :method => :delete
 = link_to 'Back to movie list', movies_path
 
+%br
+%h3 Review:
+- @movie.reviews.each do |review|
+  %td
+  %tr= review.moviegoer.name + '('
+  %tr= review.potatoes 
+  %tr= ') : ' +review.comments
+  %br
+
