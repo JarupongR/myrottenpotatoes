@@ -1,5 +1,8 @@
 # This file is app/controllers/movies_controller.rb
 class MoviesController < ApplicationController
+
+  skip_before_action :authenticate!, only: [ :show, :index ]
+
     def index
       @movies = Movie.all
     end
