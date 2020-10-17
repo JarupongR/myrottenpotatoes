@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :has_moviegoer_and_movie, :only => [:new, :create]
+  before_action :has_moviegoer_and_movie, :only => [:new, :create, :edit, :update, :destroy]
     
     protected
     def has_moviegoer_and_movie
@@ -41,6 +41,13 @@ class ReviewsController < ApplicationController
       else
         render 'edit' 
       end
+    end
+
+    def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      flash[:notice] = "Your review for '#{@movie.title}' was deleted."
+      redirect_to movie_path(@movie)
     end
 
     private

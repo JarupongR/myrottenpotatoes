@@ -6,3 +6,4 @@
   %label How many potatoes:
   = select_tag 'review[potatoes]', options_for_select(1..5)
   = submit_tag 'Submit Review'
+  = link_to "Cancel", movie_path(@movie)
