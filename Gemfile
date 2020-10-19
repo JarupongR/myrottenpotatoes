@@ -48,6 +48,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #use Haml
 gem 'haml'
 
+gem 'themoviedb'
+
 gem 'omniauth-twitter'
 gem 'jquery-rails'
 gem 'themoviedb'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'ZenTest'
+end

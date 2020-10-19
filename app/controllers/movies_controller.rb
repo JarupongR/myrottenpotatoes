@@ -1,7 +1,7 @@
 # This file is app/controllers/movies_controller.rb
 class MoviesController < ApplicationController
 
-  skip_before_action :authenticate!, #only: [ :show, :index ]
+  skip_before_action :authenticate!#, only: [ :show, :index ]
 
     def index
       @movies = Movie.all.order(:title)
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
     def search_tmdb
       @search_terms = params[:search_terms]
       @search_terms = " " if @search_terms  == ""
-      @search = Tmdb::Movie.find(@search_terms)
+      @search = Movie.find_in_tmdb(@search_terms)
   
       if @search != []
         render "result_search_tmdb"

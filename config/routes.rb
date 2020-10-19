@@ -9,7 +9,7 @@ Myrottenpotatoes::Application.routes.draw do
   end
 
   # Route that posts 'Search TMDb' form
-  post '/movies/search_tmdb'
+  post '/movies/search_tmdb', :as => 'search_tmdb'
 
   root :to => redirect('/movies')
   
