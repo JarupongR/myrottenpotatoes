@@ -73,3 +73,16 @@ html, body {
   img{
     height: 200px;
   }
+
+  banner{
+    margin: 0 0 1em;
+    padding: 10px;
+    color: rgb(124, 0, 0);
+    font-size: 250%;
+    font-style: bold;
+    display: block;
+    width: 100%;
+    border-bottom: 4px solid gold;
+    background: orange;
+    position: sticky;
+  }
