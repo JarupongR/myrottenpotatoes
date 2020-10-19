@@ -60,4 +60,10 @@ group :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'ZenTest'
+
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
 end
